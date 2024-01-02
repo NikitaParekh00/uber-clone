@@ -1,6 +1,9 @@
 import React from "react";
 import { StyleSheet, Text } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps"; // remove PROVIDER_GOOGLE import if not using Google Maps
+import { useSelector } from "react-redux";
+import { selectOrigin } from "../slices/navSlice";
+import tailwind from "twrnc";
 
 const styles = StyleSheet.create({
   container: {
@@ -16,17 +19,30 @@ const styles = StyleSheet.create({
 });
 
 const Map = () => {
+  const origin = useSelector(selectOrigin);
+
   return (
     <MapView
       provider={PROVIDER_GOOGLE} // remove if not using Google Maps
       style={styles.map}
-      region={{
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.015,
-        longitudeDelta: 0.0121,
+      // style={tailwind`flex-1`}
+      mapType="mutedStandard"
+      initialRegion={{
+        latitude: origin.location.lat,
+        longitude: origin.location.lng,
+        latitudeDelta: 0.005,
+        longitudeDelta: 0.005,
       }}
-    ></MapView>
+    >
+      {origin?.location && (
+        <Marker
+          coordinate={{
+            latitude: origin.location.lat,
+            longitude: origin.location.lng,
+          }}
+        />
+      )}
+    </MapView>
   );
 };
 
