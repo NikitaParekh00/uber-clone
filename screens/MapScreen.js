@@ -17,12 +17,12 @@ export const MapScreen = () => {
         <Stack.Navigator>
           <Stack.Screen
             name="NavigateCard"
-            options={{ headersShown: false }}
+            options={{ headerShown: false }}
             component={NavigateCard}
           ></Stack.Screen>
           <Stack.Screen
             name="RideOptionsCard"
-            options={{ headersShown: false }}
+            options={{ headerShown: false }}
             component={RideOptionsCard}
           ></Stack.Screen>
         </Stack.Navigator>

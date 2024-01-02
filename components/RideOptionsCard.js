@@ -1,7 +1,6 @@
-import React from 'react'
+import { Text } from "@rneui/themed";
+import React from "react";
 
 export const RideOptionsCard = () => {
-  return (
-    <div>RideOptionsCard</div>
-  )
-}
+  return <Text>RideOptionsCard</Text>;
+};
